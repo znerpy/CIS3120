@@ -1,0 +1,100 @@
+Group Project #1: Web scraping Due Date: Wed. 3/2/22 (at 1pm)
+
+Objective: To apply web scraping concepts and use nested built-in data structures in Python.
+
+Instructions: Complete this project in groups of two and without assistance from other groups or outside parties. Doing so will be considered an academic integrity violation. See below.
+
+Requirements: Your code should have the following components:
+
+Using the URL assigned to your group (based on your group number), write Python code to scrape the table found on that page. If there is more than one table, you should only scrape the first.
+
+Scrape the data from the table and store it in a built-in Python structure (a list of dictionaries).
+
+Once the data is stored in your Python data structure, write code to calculate the average of the numeric column. (Hint: you may need to strip the commas from the numbers and convert them to numbers before calculating the average). Output: Your program should print the following (please make sure you remove any extra output):
+
+The heading in the page that describes the content of the table (h1).
+The built-in data structure you created showing data from the table. Print it all at once.
+The number of items in your list and the average of the numeric column with two decimals.
+Written Communication Component: Add a comment in the last cell of your notebook with your interpretation of the results printed in step 3. Documentation: Include the three levels of documentation discussed in class. Submit for grading: Upload a Jupyter notebook file (.ipynb) with your Python program (or a .py file if you use an IDE like Spyder), using the corresponding Bb link. Only one submission per group is needed. Use the group number when you name your file (e.g., G7WebScraping.ipynb).
+
+import requests
+from bs4 import BeautifulSoup
+
+url = 'https://www.worldometers.info/geography/how-many-countries-in-asia/'
+r = requests.get(url)
+soup = BeautifulSoup(r.content, 'html.parser')
+print(soup.title.text)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Retrieve the first table with all the movies
+co_table = soup.find('table')
+print(co_table)
+
+#Part I: Retrieve the headers and put them in a list
+headers = []
+
+all_th = co_table.find('thead').find_all('th')
+print("This is the content of all_th: ",all_th)
+
+for header in all_th:
+  headers.append(header.text)
+print("This is headers: ", headers)
+
+print(all_th)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Part II: Retrieve the rows and store data in a list of dictionaries
+countries = []
+all_bodytr = co_table.find('tbody').find_all('tr')
+
+# 3 For Loops: one to go through rows, second to go through columns in each row,
+# third for loop to scrape data and create our dictionary!
+
+for row in all_bodytr:
+  values = []
+  for col in row.find_all('td'):
+      values.append(col.text)
+  if values:
+      co_dict = {}
+      for i in range(len(values)):
+        co_dict[headers[i]]=values[i]
+      countries.append(co_dict)
+
+print('All the countries at once \n', countries)
+for country in countries:
+  print('country_dict: ', country)
+  print()
+  
+ print('The total number of countries is: ', len(countries))
+ _________________________________________________________________________________________________________________________________________________________
+ 
+from sys import float_repr_style
+
+#Part III: Calculation of total population 
+#tot is total ratings and used to accumulate ratings
+tot = 0
+
+#dte is the data element in each row(countries in this case)
+for country in countries:
+     #remove special characters from ratings
+    dte = country['Population(2020)'].replace('\n','')
+    f = float(dte.replace(',',''))
+    #transform to float and accumulate in tot
+    tot += f
+
+#To compute average, divide tot by the number of total countries
+pop_avg = tot/len(countries)
+
+print("Average Population for Countries in Asia (2020)","{:.2f}".format(pop_avg))
+____________________________________________________________________________________________________________________________________________________________
+
+#Written Communication Part to Analyze Results
+#The total number of countries in Asia is 48.
+#All together the total population in all 48 countries in Asia is: 
+#4,609,091,684.16
+#In order to calculate avg. pop. for 48 countries in Asia: 
+#4609091684.16/48
+#The average population for countries in Asia was: 
+# (4609091684.16/48) = 96,022,743.42 
