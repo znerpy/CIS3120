@@ -1,0 +1,383 @@
+This is an individual assignment for submission that requires you to follow an online (YouTube) tutorial about Pandas, replicate the examples in your own Jupyter Notebook, and upload your ipynb file on Blackboard.
+The assignment has three parts because the tutorial is divided into three segments:
+
+1. Part I: Watch the first part of the tutorial (Pandas Series ~ 11mins) at https://www.youtube.com/watch?v=HKVsVksViXo&ab_channel=DataTalks and repeat the exercises in your own notebook. 
+2. Part II: Watch the second part of the tutorial (Pandas Dataframes ~ 9 mins) at https://www.youtube.com/watch?v=KB-19V-cSs4&ab_channel=DataTalks and repeat the exercises in your own notebook
+3. Part III: Watch the second part of the tutorial (Pandas Functions ~ 7 mins) at https://www.youtube.com/watch?v=Z6RU_MFjevU&ab_channel=DataTalks and repeat the exercises in your own notebook
+
+Note: As you follow these tutorials, you do not need to copy the explanations shown in the Jupyter Notebook in each video, just the coding exercises, and comments, and add your own documentation. Also, for this assignment, you only need to use level 1 (top of the notebook with title, name, and date) and level 2 (comments in code) documentation. You can skip the output documentation. 
+Please create only one Jupyter notebook with all the parts. In the last cell include a paragraph explaining your personal takeaways (lessons learned, skills improved, etc.) from this assignment. This short write-up will help you improve your written communication skills.
+Make sure your last name is part of the ipynb file name, and upload it using this link by the deadline. Only on-time submissions will receive full credit.
+Due date: Wed. 3/23/22 at 1 pm
+__________________________________________________________________________________________________________________________________________________________________________
+
+#import pandas as panel data
+import pandas as pd 
+
+#import numpy as np
+import numpy as np
+
+#creating a series object
+s = pd.Series(
+        np.random.randn(5),
+        index=['a','b','c','d','e'],
+        name='example')
+s
+::output::
+a    1.176892
+b    0.594525
+c    0.046952
+d   -0.728211
+e    0.152048
+Name: example, dtype: float64
+_________________________________________
+pd.Series(5, index=['a','b','c','d','e'])
+::output:: 
+a    5
+b    5
+c    5
+d    5
+e    5
+dtype: int64
+
+#First element of a series
+s[0]
+1.1768919299990448
+
+#Slicing a series
+s[:3]
+a    1.176892
+b    0.594525
+c    0.046952
+Name: example, dtype: float64
+__________________________________________
+#Indexes in a particular order
+s[[4, 3, 1]]
+
+e    0.152048
+d   -0.728211
+b    0.594525
+Name: example, dtype: float64
+
+#Get at underlying data behind series
+s.values
+
+array([ 1.17689193,  0.59452477,  0.04695247, -0.72821073,  0.15204761])
+
+_____________________________________________
+#Selecting where the index is something
+s['e'] = 500
+s
+a      1.176892
+b      0.594525
+c      0.046952
+d     -0.728211
+e    500.000000
+Name: example, dtype: float64
+_______________________________________________
+#Index into a series using an array of T/F
+s[[True, True, False, False, True]]
+
+a      1.176892
+b      0.594525
+e    500.000000
+Name: example, dtype: float64
+________________________________________________
+#Which of our series elements is greater than 0?
+s > 0
+a     True
+b     True
+c     True
+d    False
+e     True
+Name: example, dtype: bool
+__________________________________________________
+#or the extremely common
+s[s > 0], s > 0
+
+(a      1.176892
+ b      0.594525
+ c      0.046952
+ e    500.000000
+ Name: example, dtype: float64,
+ a     True
+ b     True
+ c     True
+ d    False
+ e     True
+ Name: example, dtype: bool)
+ 
+ #and you can mutate the data too
+s[s < 0.5] *= -1
+s
+
+a      1.176892
+b      0.594525
+c     -0.046952
+d      0.728211
+e    500.000000
+Name: example, dtype: float64
+
+#Add them
+s + s
+
+a       2.353784
+b       1.189050
+c      -0.093905
+d       1.456421
+e    1000.000000
+Name: example, dtype: float64
+
+#Exponentiate them
+np.exp(s)
+
+#columnar aggregate computations
+s.mean()
+100.49053499384031
+
+s.abs()
+a      1.176892
+b      0.594525
+c      0.046952
+d      0.728211
+e    500.000000
+Name: example, dtype: float64
+
+#if the indexes dont match up you will get nans
+s + s[s > 0]
+a       2.353784
+b       1.189050
+c            NaN
+d       1.456421
+e    1000.000000
+Name: example, dtype: float64
+____________________________________________________________
+#constructing a data frame
+d = {'one' : pd.Series([1.,2.,3.], index=['a','b','c']),
+     'two' : pd.Series([1.,2.,3.,4.], index=['a','b','c','d'])}
+
+df = pd.DataFrame(d)
+
+df
+
+	one	two
+a	1.0	1.0
+b	2.0	2.0
+c	3.0	3.0
+d	NaN	4.0
+
+#passing np arrays and scalars
+
+d = {'one' : 'Mellow',
+    'two' : np.array([1.,2.,3.,4.])}
+
+df = pd.DataFrame(d)
+df
+
+one	two
+0	Mellow	1.0
+1	Mellow	2.0
+2	Mellow	3.0
+3	Mellow  4.0
+
+df.columns = ['1', '2']
+df.index = ['a', 'b','c','d']
+df
+
+     1	   2
+a	Mellow	1.0
+b	Mellow	2.0
+c	Mellow	3.0
+d	Mellow	4.0
+_______________________________________________
+d = {'one' : 'Hellow',
+    'two' : np.array([1.,2.,3.,4.])}
+
+df = pd.DataFrame(d)
+
+df
+
+   one	  two
+0	Hellow	1.0
+1	Hellow	2.0
+2	Hellow	3.0
+3	Hellow	4.0
+__________________________________________________
+d = {'one' : 'Hellow',
+     'two' : np.array([1., 2., 3., 4.])}
+
+df = pd.DataFrame(d)
+df.index = ['a', 'b','c','d']
+
+#named series
+df['one']
+
+a    Hellow
+b    Hellow
+c    Hellow
+d    Hellow
+Name: one, dtype: object
+
+del df['one']
+
+df['three'] = df['two'] + df['two']
+df['four'] = 'four'
+df['five'] = df['four'][:2]
+
+df
+
+one	two	three	four	five
+a	Hellow	1.0	2.0	four	four
+b	Hellow	2.0	4.0	four	four
+c	Hellow	3.0	6.0	four	NaN
+d	Hellow	4.0	8.0	four	NaN
+
+#get a column
+df['two']
+
+#or more
+df[['five','two']]
+
+# select by indexes and column names
+df.loc['a', 'two']
+
+df.loc['d':'a':-1, 'two':'three']
+
+  two	three
+d	4.0	8.0
+c	3.0	6.0
+b	2.0	4.0
+a	1.0	2.0
+
+#select rows and columns by their ordering 
+df.iloc[1:3, 0]
+
+df.iloc[1:3]
+
+
+one	two	three	four	five
+b	Hellow	2.0	4.0	four	four
+c	Hellow	3.0	6.0	four	NaN
+
+#Dataframewise operations
+df.copy()
+
+
+one	two	three	four	five
+a	Hellow	1.0	2.0	four	four
+b	Hellow	2.0	4.0	four	four
+c	Hellow	3.0	6.0	four	NaN
+d	Hellow	4.0	8.0	four	NaN
+
+df.two.astype(np.int)
+
+a    1
+b    2
+c    3
+d    4
+Name: two, dtype: int64
+
+#Rows to columns, and vice versa
+df.T
+
+a	b	c	d
+one	Hellow	Hellow	Hellow	Hellow
+two	1.0	2.0	3.0	4.0
+three	2.0	4.0	6.0	8.0
+four	four	four	four	four
+five	four	four	NaN	NaN
+
+#Visualize: gives top row
+df.head(2)
+
+#random sample of data
+df.sample(2)
+
+one	two	three	four	five
+a	Hellow	1.0	2.0	four	four
+c	Hellow	3.0	6.0	four	NaN
+
+df.info()
+<class 'pandas.core.frame.DataFrame'>
+Index: 4 entries, a to d
+Data columns (total 5 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   one     4 non-null      object 
+ 1   two     4 non-null      float64
+ 2   three   4 non-null      float64
+ 3   four    4 non-null      object 
+ 4   five    2 non-null      object 
+dtypes: float64(2), object(3)
+memory usage: 364.0+ bytes
+
+df.describe(include='all')
+
+one	two	three	four	five
+count	4	4.000000	4.000000	4	2
+unique	1	NaN	NaN	1	1
+top	Hellow	NaN	NaN	four	four
+freq	4	NaN	NaN	4	2
+mean	NaN	2.500000	5.000000	NaN	NaN
+std	NaN	1.290994	2.581989	NaN	NaN
+min	NaN	1.000000	2.000000	NaN	NaN
+25%	NaN	1.750000	3.500000	NaN	NaN
+50%	NaN	2.500000	5.000000	NaN	NaN
+75%	NaN	3.250000	6.500000	NaN	NaN
+max	NaN	4.000000	8.000000	NaN	NaN
+
+for i in range(20):
+    df[i] = i
+    
+df.head()
+
+
+one	two	three	four	five	0	1	2	3	4	...	10	11	12	13	14	15	16	17	18	19
+a	Hellow	1.0	2.0	four	four	0	1	2	3	4	...	10	11	12	13	14	15	16	17	18	19
+b	Hellow	2.0	4.0	four	four	0	1	2	3	4	...	10	11	12	13	14	15	16	17	18	19
+c	Hellow	3.0	6.0	four	NaN	0	1	2	3	4	...	10	11	12	13	14	15	16	17	18	19
+d	Hellow	4.0	8.0	four	NaN	0	1	2	3	4	...	10	11	12	13	14	15	16	17	18	19
+
+df.head().T
+
+a	b	c	d
+one	Hellow	Hellow	Hellow	Hellow
+two	1.0	2.0	3.0	4.0
+three	2.0	4.0	6.0	8.0
+four	four	four	four	four
+five	four	four	NaN	NaN
+0	0	0	0	0
+1	1	1	1	1
+2	2	2	2	2
+3	3	3	3	3
+4	4	4	4	4
+5	5	5	5	5
+6	6	6	6	6
+7	7	7	7	7
+8	8	8	8	8
+9	9	9	9	9
+10	10	10	10	10
+11	11	11	11	11
+12	12	12	12	12
+13	13	13	13	13
+14	14	14	14	14
+15	15	15	15	15
+16	16	16	16	16
+17	17	17	17	17
+18	18	18	18	18
+19	19	19	19	19
+
+pd.set_option('display.max_rows', 100)
+pd.set_option('precision', 7)
+
+s
+
+a      1.1768919
+b      0.5945248
+c     -0.0469525
+d      0.7282107
+e    500.0000000
+Name: example, dtype: float64
+
+In this assignment I learned that pd is equivalent to panel data. Pandas has two data structures a series and a dataframe. A series is like a column in excel. A series has three important parts: the data, the index, and the name. The only reason to name a series is if you're creating a data frame. Indexing into a series using an array of True or False allows to perform selection. I learned that taking the mean of a series is a columnar aggregate computation. When you've got highly- dimensional data what you use is a data frame.
+
