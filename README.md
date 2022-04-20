@@ -1,4 +1,4 @@
-Assignments for data analysis with python course:
+!!!ALL OF MY DIFFERENT LECTURES IN CIS 3120!!!:
 1. Group Project 1 - Web Scraping 
 2. Individual Assignment #2 (Pandas series, dataframes, & functions)
 3. Group Project 2 - Pandas Manipulation 
@@ -17,4 +17,8 @@ Assignments for data analysis with python course:
 16. Lab 3-21-2022 (Pandas Dataframes & Operations) 
 17. Lab 3-23-2022 (Pandas Data Manipulation)
 18. Lab 3-28-2022 (Pandas Concat & Merge)
-19. 
+19. Lab 3-30-2022 (Web APIs Part I)
+20. Lab 4-4-2022 (Web APIs Part II)
+21. Lab 4-6-2022 (API Exercises)
+22. Lab 4-11-2022 (Data Analysis Part I) 
+23. Lab 4-13-2022 (Data Analysis Part II)
