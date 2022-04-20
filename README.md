@@ -7,4 +7,6 @@ Assignments for data analysis with python course:
 6. Lab 2-7-2022 (Python Review) 
 7. Lab 2-9-2022 (Web Scraping Introduction)
 8. Lab 2-14-2022 (Web Scraping II) 
-9.
+9. Lab 2-16-2022 (Web Scraping II - Fetching Specific Data)
+10. 
+
