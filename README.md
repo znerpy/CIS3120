@@ -20,5 +20,5 @@
 19. Lab 3-30-2022 (Web APIs Part I)
 20. Lab 4-4-2022 (Web APIs Part II)
 21. Lab 4-6-2022 (API Exercises)
-22. Lab 4-11-2022 (Data Analysis Part I) 
-23. Lab 4-13-2022 (Data Analysis Part II)
+22. Lab 4-11-2022 (Data Aggregation & Analysis Part I) 
+23. Lab 4-13-2022 (Data Aggregation & Analysis Part II - Pivot Tables)
