@@ -11,4 +11,4 @@ Assignments for data analysis with python course:
 10. Lab 2-23-2022 (Web Scraping III - Fetching Specific data from tables  
 11. Lab 2-28-2022 (Web Scraping IV - Fetching Specific data from tables 
 12. Lab 3-2-2022 (NumPy Array Operations) 
-13. 
+13. Lab 3-7-2022 (NumPy Array Operations)
