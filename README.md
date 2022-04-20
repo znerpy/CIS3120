@@ -14,3 +14,7 @@ Assignments for data analysis with python course:
 13. Lab 3-7-2022 (NumPy Array Operations)
 14. Lab 3-9-2022 (NumPy Computations)
 15. Lab 3-16-2022 (Intro to Pandas)
+16. Lab 3-21-2022 (Pandas Dataframes & Operations) 
+17. Lab 3-23-2022 (Pandas Data Manipulation)
+18. Lab 3-28-2022 (Pandas Concat & Merge)
+19. 
