@@ -1,4 +1,5 @@
 !!!ALL OF MY DIFFERENT LECTURES IN CIS 3120!!!:
+0. Midterm Questions & Answers
 1. Group Project 1 - Web Scraping 
 2. Individual Assignment #2 (Pandas series, dataframes, & functions)
 3. Group Project 2 - Pandas Manipulation 
