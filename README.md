@@ -5,5 +5,6 @@ Assignments for data analysis with python course:
 4. Group Project 3 - NewsAPI 
 5. Lab 2-2-2022 (Intro to programming w/ analytics)
 6. Lab 2-7-2022 (Python Review) 
-7. 
-8.
+7. Lab 2-9-2022 (Web Scraping Introduction)
+8. 
+9.
