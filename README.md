@@ -24,3 +24,5 @@
 23. Lab 4-6-2022 (API Exercises)
 24. Lab 4-11-2022 (Data Aggregation & Analysis Part I) 
 25. Lab 4-13-2022 (Data Aggregation & Analysis Part II - Pivot Tables)
+26. Lab 4-25-2022 (Basic Visualization) 
+27. Lab 4-27-2022 (Advanced Visualizations) 
