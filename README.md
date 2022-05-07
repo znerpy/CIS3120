@@ -1,6 +1,6 @@
 !!!ALL OF MY DIFFERENT LECTURES IN CIS 3120!!!:
 1. Midterm Questions & Answers
-2. Empty
+2. IJA #3 - DATA ANALYSIS WORKFLOW
 3. Group Project 1 - Web Scraping 
 4. Individual Assignment #2 (Pandas series, dataframes, & functions)
 5. Group Project 2 - Pandas Manipulation 
@@ -26,3 +26,4 @@
 25. Lab 4-13-2022 (Data Aggregation & Analysis Part II - Pivot Tables)
 26. Lab 4-25-2022 (Basic Visualization) 
 27. Lab 4-27-2022 (Advanced Visualizations) 
+28. 
